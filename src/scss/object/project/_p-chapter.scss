@@ -16,7 +16,7 @@
   }
 }
 
-.p-chapter__number {
+.p-chapter__eyebrow {
   font-family: $font-family-sans;
   font-size: $font-size-caption;
   letter-spacing: 0.2em;
@@ -40,14 +40,14 @@
 }
 
 // Modifier hooks for chapter-specific tweaks (背景色変化など)
-.p-chapter--encounter {
-  // background-color override etc.
+.p-chapter--bottle {
+  // Chapter 1: 瓶の手紙
 }
 
-.p-chapter--learning {
-  //
+.p-chapter--voyage {
+  // Chapter 2: 航海
 }
 
-.p-chapter--conviction {
-  //
+.p-chapter--sender {
+  // Chapter 3: 差出人
 }
