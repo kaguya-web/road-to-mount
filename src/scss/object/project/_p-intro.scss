@@ -1,0 +1,27 @@
+@use '../../foundation/variables' as *;
+@use '../../foundation/mixin' as *;
+
+.p-intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $space-m;
+}
+
+.p-intro__title {
+  font-family: $font-family-mincho;
+  font-size: $font-size-title-l;
+  line-height: $line-height-title;
+  letter-spacing: 0.05em;
+  margin-bottom: $space-s;
+}
+
+.p-intro__subtitle {
+  font-family: $font-family-mincho;
+  font-size: $font-size-body;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,13 @@
+@use 'variables' as *;
+
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  background-color: $color-bg-base;
+  color: $color-text-base;
+  font-family: $font-family-mincho;
+  font-size: $font-size-body;
+  line-height: $line-height-base;
+}

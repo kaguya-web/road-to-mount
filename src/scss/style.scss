@@ -1,0 +1,22 @@
+// PRECSS structure entry point
+// Order: Foundation → Layout → Object (Component → Project → Utility)
+
+// Foundation
+@use 'foundation/variables' as *;
+@use 'foundation/mixin' as *;
+@use 'foundation/reset';
+@use 'foundation/base';
+
+// Layout
+@use 'layout/l-main';
+
+// Object - Component
+// (none yet)
+
+// Object - Project
+@use 'object/project/p-intro';
+@use 'object/project/p-chapter';
+@use 'object/project/p-outro';
+
+// Object - Utility
+// (none yet)
