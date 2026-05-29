@@ -1,0 +1,53 @@
+@use '../../foundation/variables' as *;
+@use '../../foundation/mixin' as *;
+
+.p-chapter {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $space-l $space-m;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mq-md-up {
+    padding: $space-xl $space-l;
+  }
+}
+
+.p-chapter__number {
+  font-family: $font-family-sans;
+  font-size: $font-size-caption;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  margin-bottom: $space-s;
+}
+
+.p-chapter__title {
+  font-family: $font-family-mincho;
+  font-size: $font-size-title-m;
+  line-height: $line-height-title;
+  letter-spacing: 0.05em;
+  margin-bottom: $space-m;
+}
+
+.p-chapter__body {
+  font-family: $font-family-mincho;
+  font-size: $font-size-body;
+  line-height: $line-height-base;
+}
+
+// Modifier hooks for chapter-specific tweaks (背景色変化など)
+.p-chapter--encounter {
+  // background-color override etc.
+}
+
+.p-chapter--learning {
+  //
+}
+
+.p-chapter--conviction {
+  //
+}

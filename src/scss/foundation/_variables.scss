@@ -1,0 +1,30 @@
+// Color tokens
+$color-bg-base: #fafaf7;
+$color-text-base: #1a1a1a;
+$color-text-muted: #6e6e6e;
+$color-accent: #2b2b2b;
+
+// Typography
+$font-family-mincho: '游明朝', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', serif;
+$font-family-sans: 'Helvetica Neue', 'Hiragino Sans', sans-serif;
+
+$font-size-base: 16px;
+$font-size-body: 1.125rem;
+$font-size-title-l: clamp(2.5rem, 5vw, 4.5rem);
+$font-size-title-m: clamp(1.75rem, 3vw, 2.5rem);
+$font-size-caption: 0.875rem;
+
+$line-height-base: 1.8;
+$line-height-title: 1.3;
+
+// Spacing
+$space-xs: 0.5rem;
+$space-s: 1rem;
+$space-m: 2rem;
+$space-l: 4rem;
+$space-xl: 8rem;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
