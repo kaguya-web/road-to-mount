@@ -1,7 +1,7 @@
 @use '../../foundation/variables' as *;
 @use '../../foundation/mixin' as *;
 
-.p-outro {
+.p-outro__intro {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,8 @@
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
   @include mq-md-up {
     padding: $space-xl $space-l;
@@ -33,17 +35,141 @@
   margin-bottom: $space-m;
 }
 
-.p-outro__body {
+// シーン形式（Prologue/Chapterと同型・背景は朝空の水色でテキスト反転）
+.p-outro__scene {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg-outro;
+  color: $color-text-on-light;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  @include mq-md-up {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+.p-outro__scene-media {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    width: 50%;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    padding: $space-xl $space-l;
+  }
+}
+
+.p-outro__scene-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: $color-bg-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-s;
+}
+
+.p-outro__scene-caption {
+  font-family: $font-family-sans;
+  font-size: $font-size-caption;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.p-outro__scene-text {
   font-family: $font-family-mincho;
   font-size: $font-size-body;
   line-height: $line-height-base;
-  margin-bottom: $space-l;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    width: 50%;
+    padding: $space-xl $space-l;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  p + p {
+    margin-top: $space-s;
+  }
+}
+
+// テキストのみシーン（画像なし・通常本文・中央寄せ）
+.p-outro__scene--text-only {
+  flex-direction: column;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: $space-xl $space-l;
+  }
+
+  .p-outro__scene-text {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+
+    @include mq-md-up {
+      width: 100%;
+      max-width: 720px;
+      padding: 0;
+    }
+  }
+}
+
+// 署名セクション（Outro固有）
+.p-outro__closing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $space-l $space-m;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .p-outro__signature {
   font-family: $font-family-mincho;
-  font-size: $font-size-body;
+  font-size: 30px;
   letter-spacing: 0.2em;
   color: $color-text-muted;
   margin-top: $space-m;
+}
+
+// フッター（署名下・ビューポート下端に淡く配置）
+.p-outro__footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: $space-m;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.p-outro__footer-text {
+  font-family: $font-family-sans;
+  font-size: $font-size-caption;
+  letter-spacing: 0.2em;
+  color: $color-text-muted;
+  line-height: 1.6;
 }

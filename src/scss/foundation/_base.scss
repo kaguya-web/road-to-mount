@@ -2,6 +2,8 @@
 
 html {
   font-size: $font-size-base;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -10,4 +12,9 @@ body {
   font-family: $font-family-mincho;
   font-size: $font-size-body;
   line-height: $line-height-base;
+  cursor: url('/cursor-ship-b.svg') 16 16, auto; // B: パイン（確定）
+}
+
+p {
+  font-size: 20px;
 }

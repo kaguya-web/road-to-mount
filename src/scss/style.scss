@@ -11,7 +11,8 @@
 @use 'layout/l-main';
 
 // Object - Component
-// (none yet)
+@use 'object/component/c-cursor-toggle';
+@use 'object/component/c-wake';
 
 // Object - Project
 @use 'object/project/p-intro';

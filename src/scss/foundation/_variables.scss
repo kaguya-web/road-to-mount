@@ -4,6 +4,14 @@ $color-text-base: #1a1a1a;
 $color-text-muted: #6e6e6e;
 $color-accent: #2b2b2b;
 
+// 章ごとの背景色（青系・深い藍から朝の水色へ）
+$color-bg-prologue:  #111725; // 深夜の闇（ほぼ黒に近い藍）
+$color-bg-chapter-1: #243244; // Prologue寄り・夜明け前
+$color-bg-chapter-2: #506f8d; // 中間・薄明
+$color-bg-chapter-3: #7caed7; // Outro寄り・朝の青
+$color-bg-outro:     #bfd5e6; // 朝空の水色
+$color-text-on-light: #0a1838; // 明るい背景の上で使うテキスト色
+
 // Typography
 $font-family-mincho: '游明朝', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', serif;
 $font-family-sans: 'Helvetica Neue', 'Hiragino Sans', sans-serif;

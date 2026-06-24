@@ -2,5 +2,76 @@
 // SCSS imports the main stylesheet via index.html <link>, but module-side init lives here.
 
 document.addEventListener('DOMContentLoaded', () => {
-  // IntersectionObserver setup for chapter reveal animations will live here.
+  // 航跡パターン A〜Eトグル（旧船カーソル切替UIを流用）
+  const buttons = document.querySelectorAll('.c-cursor-toggle__btn');
+  let wakeVariant = 'c';
+  const apply = (variant) => {
+    wakeVariant = variant;
+    buttons.forEach((b) => {
+      b.classList.toggle('is-active', b.dataset.cursor === variant);
+    });
+  };
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => apply(btn.dataset.cursor));
+  });
+  apply('c');
+
+  // 章連動色反転（パターンA用）
+  // 暗背景セクションが画面中央領域に入ると body.in-dark-section を付ける
+  const darkSections = document.querySelectorAll(
+    '.p-prologue__scene, .p-chapter--bottle .p-chapter__scene, .p-chapter--voyage .p-chapter__scene'
+  );
+  const darkObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('is-in-view', entry.isIntersecting);
+    });
+    const anyInView = document.querySelector('.is-in-view') !== null;
+    document.body.classList.toggle('in-dark-section', anyInView);
+  }, {
+    rootMargin: '-40% 0px -40% 0px',
+    threshold: 0,
+  });
+  darkSections.forEach((s) => darkObserver.observe(s));
+
+  // マウス位置追跡
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let mouseMoved = false;
+  let lastSpawnX = mouseX;
+  let lastSpawnY = mouseY;
+
+  const MIN_MOVE_DIST = 14;
+  const STERN_OFFSET = 8;
+  const SCROLL_THROTTLE_MS = 100;
+
+  const spawnAt = (x, y) => {
+    const ring = document.createElement('div');
+    ring.className = `c-wake c-wake--${wakeVariant}`;
+    ring.style.left = `${x}px`;
+    ring.style.top = `${y - STERN_OFFSET}px`;
+    document.body.appendChild(ring);
+    setTimeout(() => ring.remove(), 1000);
+  };
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    mouseMoved = true;
+    const dx = mouseX - lastSpawnX;
+    const dy = mouseY - lastSpawnY;
+    if (Math.hypot(dx, dy) > MIN_MOVE_DIST) {
+      spawnAt(mouseX, mouseY);
+      lastSpawnX = mouseX;
+      lastSpawnY = mouseY;
+    }
+  }, { passive: true });
+
+  let lastScrollSpawn = 0;
+  window.addEventListener('scroll', () => {
+    if (!mouseMoved) return;
+    const now = performance.now();
+    if (now - lastScrollSpawn < SCROLL_THROTTLE_MS) return;
+    lastScrollSpawn = now;
+    spawnAt(mouseX, mouseY);
+  }, { passive: true });
 });

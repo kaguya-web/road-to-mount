@@ -1,7 +1,12 @@
-@use '../../foundation/variables' as *;
-@use '../../foundation/mixin' as *;
+@use "../../foundation/variables" as *;
+@use "../../foundation/mixin" as *;
 
 .p-prologue {
+  // 旧 max-width: 720px を外す（シーン形式はフルワイドを使う）
+  // 内部要素ごとに幅制御する
+}
+
+.p-prologue__intro {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,6 +15,8 @@
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
   @include mq-md-up {
     padding: $space-xl $space-l;
@@ -33,8 +40,181 @@
   margin-bottom: $space-m;
 }
 
+// シーン形式（cast型インスパイア・縦スライド + PC横並び）
+// シーン全体: ダーク背景。左エリア内中央に白の画像プレースホルダー
+.p-prologue__scene {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg-prologue;
+  color: $color-bg-base;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  @include mq-md-up {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+// 左エリア（シーン背景の黒がここから見える、中央に画像プレースホルダー）
+.p-prologue__scene-media {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    width: 50%;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    padding: $space-xl $space-l;
+  }
+}
+
+// 画像プレースホルダー（白色面・サイズ感確認用）
+.p-prologue__scene-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: $color-bg-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-s;
+}
+
+.p-prologue__scene-caption {
+  font-family: $font-family-sans;
+  font-size: $font-size-caption;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.p-prologue__scene-text {
+  font-family: $font-family-mincho;
+  font-size: $font-size-body;
+  line-height: $line-height-base;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    width: 50%;
+    padding: $space-xl $space-l;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  p + p {
+    margin-top: $space-s;
+  }
+}
+
+// テキストのみシーン（画像なし・通常本文・中央寄せ）
+.p-prologue__scene--text-only {
+  flex-direction: column;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: $space-xl $space-l;
+  }
+
+  .p-prologue__scene-text {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+
+    @include mq-md-up {
+      width: 100%;
+      max-width: 720px;
+      padding: 0;
+    }
+  }
+}
+
+// テキスト量多めシーン用の小さめサイズ（Page 3-5 列挙・段落系）
+.p-prologue__scene--small {
+  .p-prologue__scene-text {
+    font-size: $font-size-base;
+  }
+}
+
+// 画像のみシーン（場面転換マーカー・本文なし）
+.p-prologue__scene--image-only {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: $space-xl $space-l;
+  }
+
+  .p-prologue__scene-media {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq-md-up {
+      width: 100%;
+      max-width: 720px;
+      min-height: auto;
+      position: static;
+      padding: 0;
+    }
+  }
+}
+
+// 独立シーン（中央に一文だけ大きく配置・画像なし）
+.p-prologue__scene--solo {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: $space-xl $space-l;
+  }
+}
+
+.p-prologue__scene-quote {
+  font-family: $font-family-mincho;
+  line-height: $line-height-title;
+  letter-spacing: 0.05em;
+  text-align: left;
+  max-width: 960px;
+
+  p {
+    font-size: 30px;
+  }
+}
+
+// 旧形式（残り段落・後続シーン化までの暫定）
 .p-prologue__body {
   font-family: $font-family-mincho;
   font-size: $font-size-body;
   line-height: $line-height-base;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    padding: $space-xl $space-l;
+  }
+
+  p + p {
+    margin-top: $space-s;
+  }
 }
