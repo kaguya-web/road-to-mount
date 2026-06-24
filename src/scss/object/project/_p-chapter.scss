@@ -1,7 +1,7 @@
 @use '../../foundation/variables' as *;
 @use '../../foundation/mixin' as *;
 
-.p-chapter {
+.p-chapter__intro {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,8 @@
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
   @include mq-md-up {
     padding: $space-xl $space-l;
@@ -33,21 +35,206 @@
   margin-bottom: $space-m;
 }
 
-.p-chapter__body {
+// シーン形式（Prologueと同型・cast型インスパイア）
+.p-chapter__scene {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg-chapter-1;
+  color: $color-bg-base;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  @include mq-md-up {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+// 章ごとの背景色変化（青系・徐々に明るく）
+// 暫定：Drift は Prologue と同じ深夜色を流用。境界が見えづらいので色設計見直しは別途
+.p-chapter--drift .p-chapter__scene {
+  background-color: $color-bg-prologue;
+}
+
+.p-chapter--bottle .p-chapter__scene {
+  background-color: $color-bg-chapter-1;
+}
+
+.p-chapter--voyage .p-chapter__scene {
+  background-color: $color-bg-chapter-2;
+}
+
+.p-chapter--sender .p-chapter__scene {
+  background-color: $color-bg-chapter-3;
+}
+
+.p-chapter__scene-media {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    width: 50%;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    padding: $space-xl $space-l;
+  }
+}
+
+.p-chapter__scene-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: $color-bg-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-s;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.p-chapter__scene-caption {
+  font-family: $font-family-sans;
+  font-size: $font-size-caption;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.p-chapter__scene-text {
   font-family: $font-family-mincho;
   font-size: $font-size-body;
   line-height: $line-height-base;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    width: 50%;
+    padding: $space-xl $space-l;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  p + p {
+    margin-top: $space-s;
+  }
 }
 
-// Modifier hooks for chapter-specific tweaks (背景色変化など)
-.p-chapter--bottle {
-  // Chapter 1: 瓶の手紙
+// テキストのみシーン（画像なし・通常本文・中央寄せ）
+.p-chapter__scene--text-only {
+  flex-direction: column;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: $space-xl $space-l;
+  }
+
+  .p-chapter__scene-text {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+
+    @include mq-md-up {
+      width: 100%;
+      max-width: 720px;
+      padding: 0;
+    }
+  }
 }
 
-.p-chapter--voyage {
-  // Chapter 2: 航海
+// 画像のみシーン（場面転換マーカー・本文なし・テキストページと同じ100vh占有）
+.p-chapter__scene--image-only {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .p-chapter__scene-media {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    @include mq-md-up {
+      width: 100%;
+      max-width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+      position: static;
+      padding: 0;
+    }
+  }
+
+  .p-chapter__scene-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    background-color: transparent;
+    padding: 0;
+
+    picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
 }
 
-.p-chapter--sender {
-  // Chapter 3: 差出人
+// 独立シーン（中央に一文だけ大きく配置・画像なし）
+.p-chapter__scene--solo {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: $space-xl $space-l;
+  }
 }
+
+.p-chapter__scene-quote {
+  font-family: $font-family-mincho;
+  line-height: $line-height-title;
+  letter-spacing: 0.05em;
+  text-align: left;
+  max-width: 960px;
+
+  @include mq-md-up {
+    text-align: center;
+  }
+
+  p {
+    font-size: 30px;
+  }
+}
+

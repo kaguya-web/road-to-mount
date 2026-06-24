@@ -1,64 +1,826 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Course to Mount / mountへの航路</title>
-  <meta name="description" content="メタくらげが mount inc. に辿り着くまでの物語を語るサイト。">
-  <meta property="og:title" content="Course to Mount / mountへの航路">
-  <meta property="og:description" content="メタくらげが mount inc. に辿り着くまでの物語を語るサイト。">
-  <meta property="og:type" content="website">
-  <link rel="stylesheet" href="/src/scss/style.scss">
-</head>
-<body>
-  <main class="l-main">
-    <section class="p-intro">
-      <p class="p-intro__eyebrow">Course to Mount</p>
-      <h1 class="p-intro__title">mountへの航路</h1>
-      <p class="p-intro__subtitle">メタくらげが mount inc. に辿り着くまでの物語</p>
-    </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course to Mount / mountへの航路</title>
+    <meta
+      name="description"
+      content="メタくらげが mount inc. に辿り着くまでの物語を語るサイト。"
+    />
+    <meta property="og:title" content="Course to Mount / mountへの航路" />
+    <meta
+      property="og:description"
+      content="メタくらげが mount inc. に辿り着くまでの物語を語るサイト。"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="/src/scss/style.scss" />
+  </head>
+  <body>
+    <div class="c-cursor-toggle" role="toolbar" aria-label="航跡切り替え">
+      <span class="c-cursor-toggle__label">航跡</span>
+      <button type="button" class="c-cursor-toggle__btn" data-cursor="a">
+        A
+      </button>
+      <button type="button" class="c-cursor-toggle__btn" data-cursor="b">
+        B
+      </button>
+      <button type="button" class="c-cursor-toggle__btn" data-cursor="c">
+        C
+      </button>
+      <button type="button" class="c-cursor-toggle__btn" data-cursor="d">
+        D
+      </button>
+      <button type="button" class="c-cursor-toggle__btn" data-cursor="e">
+        E
+      </button>
+    </div>
 
-    <section class="p-prologue">
-      <p class="p-prologue__eyebrow">Prologue</p>
-      <h2 class="p-prologue__title">漂流</h2>
-      <div class="p-prologue__body">
-        <!-- プロローグ本文（24歳、創作の渇き、繰り返しの日常）はテキスト初稿で追加 -->
-      </div>
-    </section>
+    <main class="l-main">
+      <section class="p-intro">
+        <p class="p-intro__eyebrow">Course to Mount</p>
+        <h1 class="p-intro__title">mountへの航路</h1>
+        <p class="p-intro__subtitle">
+          メタくらげが mount inc. に辿り着くまでの物語
+        </p>
+      </section>
 
-    <section class="p-chapter p-chapter--bottle">
-      <p class="p-chapter__eyebrow">Chapter 1 / Bottle</p>
-      <h2 class="p-chapter__title">瓶の手紙</h2>
-      <div class="p-chapter__body">
-        <!-- 章1本文（パーフェクトデイズ→Days of HIRAYAMA→Webは作品になる気づき） -->
-      </div>
-    </section>
+      <section class="p-prologue">
+        <div class="p-prologue__intro">
+          <p class="p-prologue__eyebrow">Prologue / Origin</p>
+          <h2 class="p-prologue__title">起点</h2>
+        </div>
 
-    <section class="p-chapter p-chapter--voyage">
-      <p class="p-chapter__eyebrow">Chapter 2 / Voyage</p>
-      <h2 class="p-chapter__title">航海</h2>
-      <div class="p-chapter__body">
-        <!-- 章2本文（デイトラ卒業課題、文字化け、AI協働、完成、「普通」の難しさ） -->
-      </div>
-    </section>
+        <article class="p-prologue__scene p-prologue__scene--solo">
+          <div class="p-prologue__scene-quote">
+            <p>何かを作る人になりたいと思った。</p>
+          </div>
+        </article>
 
-    <section class="p-chapter p-chapter--sender">
-      <p class="p-chapter__eyebrow">Chapter 3 / Sender</p>
-      <h2 class="p-chapter__title">差出人</h2>
-      <div class="p-chapter__body">
-        <!-- 章3本文（制作会社探し→mount発見→驚き+納得→イム代表の言葉と根っこが重なる） -->
-      </div>
-    </section>
+        <article class="p-prologue__scene p-prologue__scene--solo">
+          <div class="p-prologue__scene-quote">
+            <p>小さいころから、作る時間が好きだった。</p>
+          </div>
+        </article>
 
-    <section class="p-outro">
-      <p class="p-outro__eyebrow">Outro / Reply</p>
-      <h2 class="p-outro__title">返事</h2>
-      <div class="p-outro__body">
-        <!-- Outro本文（このサイトは私なりの応答、贈与の動機） -->
-      </div>
-      <p class="p-outro__signature">メタくらげ</p>
-    </section>
-  </main>
-  <script type="module" src="/src/main.js"></script>
-</body>
+        <article class="p-prologue__scene p-prologue__scene--solo">
+          <div class="p-prologue__scene-quote">
+            <p>
+              小学校の授業で作った俳句。<br />夏休みの自由研究での工作。<br />中学校の美術でやった砂絵。<br />国語で作った短編小説。<br />高校の卒業文集。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-prologue__scene p-prologue__scene--solo">
+          <div class="p-prologue__scene-quote">
+            <p>
+              どれも、向き合ってる時間は大変だけど楽しかった。<br />限られた時間のなかでどうすれば自分が納得できるものが作れるか必死に考えた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-prologue__scene p-prologue__scene--solo">
+          <div class="p-prologue__scene-quote">
+            <p>
+              そのおかげか作ったものを人に褒められることが多かった。<br />地域で表彰されたり、クラスで一番に選ばれたこともあった。<br />どれも小さなお山の大将だったけど、すごく嬉しかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-prologue__scene p-prologue__scene--solo">
+          <div class="p-prologue__scene-quote">
+            <p>だから、何かを作る人になろうと思った。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="p-chapter p-chapter--drift">
+        <div class="p-chapter__intro">
+          <p class="p-chapter__eyebrow">Chapter 1 / Drift</p>
+          <h2 class="p-chapter__title">漂流</h2>
+        </div>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="/assets/images/alone-in-the-room-mobile.png"
+                />
+                <img
+                  src="/assets/images/alone-in-the-room.png"
+                  alt="深夜の自室、スタンドライトとPCの光だけが浮かぶ部屋で、後ろ姿の人物がキーボードに向かっている"
+                />
+              </picture>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              部屋でひとり、キーボードを叩いていた。<br />光源は手元を照らすスタンドライトと、向かい合ったPCのブルーライトだけ。<br />部屋の明かりをつけないのは、向かい部屋の両親の眠りを妨げないためだ。<br />いや。<br />それはきっと体のいい嘘で、本当はそうしないと孤独から逃げてしまうからだ。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              画面を切り替えて、小説のプロットとWordを何度も往復する。<br />1日に打ち込める文章は途方もなく少ない。<br />完成まで永遠に辿り着けないのではないかと思う。<br />そういう日は、好きな作家の文庫を脇に置いて、ひたすら写経した。<br />1日にWordで10ページ。3冊分はやった。<br />打ち込んでいるのは自分の文章ではないのに、上手すぎて何度もニヤけた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch1-S4 / 画像プレースホルダー<br />家電量販店・ケータイ売り場
+                ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>
+              1年後、家電量販店で働いていた。<br />役職はケータイ販売スタッフ。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>結局、孤独と向き合い続けることはできなかった。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              創作がこんなにも辛かったのは初めてだった。<br />それまでは寝食を忘れるほど夢中で、もっと長く取り組んでいたかった。<br />でも今回は、書くことに向き合うこと自体がしんどかった。<br />気がつくとゲームを開いていたり、自分の文章ではなく写経ばかりが進んでいた。<br />なぜそうなのか、その時の自分には分からなかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              1年の作家志望という名のニート期間で得たものは新人賞の落選と「人と接したい」という原初の欲求だった。<br />転職エージェントに登録して、人と接する職業なら何でもいいと伝えた。<br />そして、薦められたケータイ販売に一も二もなく頷いた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>が、しかし。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              売り込むために作るお客さんとの関係は自分の求めていたそれではなかった。<br />売り込むためにケータイやネット回線の知識を入れ、売り込むためにお客さんに声をかけて、売り込むために説明をするのが苦痛だった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              空虚な毎日だった。<br />結局、ケータイ販売は半年で辞めた。<br />でも、そんな空虚な毎日のなかでひとつのテーマを得た。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>「自分の作ったもので人と繋がりたい」</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch1-S13 / 画像プレースホルダー<br />オープンキッチン ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              次はアルバイトを始めた。役職はレストランのキッチンスタッフ。<br />オープンキッチンで、料理をしながらお客さんの反応を楽しめる素敵なお店だ。<br />料理を選んだのは、それが作ったもので人と繋がるもっとも身近な手段だったからだ。
+            </p>
+
+            <p>
+              そしてそれは概ね間違ってなかった。<br />それからの日々はずっといいものだった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              入った当初は、食洗機の使い方も分からず、洗った皿を定位置に戻すだけで精一杯だった。<br />それが、盛り付けと並行して食洗機を回し、提供後に皿を回収する余裕まで生まれた。<br />チーフの指摘は厳しくて正しかったけれど、そのおかげでずっと強い精神性が身についた。<br />最初はいちいち肩を落としていたけれど、いつしか「いいことを教えてもらってラッキー」だと思えるようになっていた。<br />身のこなしも、仕事への姿勢も、入った頃の自分とはきっと別人だった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              気づけば1年半経っていた。<br />確かに、悪くない毎日だった。<br />料理を作る順番に頭を悩ませるのも、他のスタッフと協力して料理の仕上げをするのも、その結果得られるお客さんの笑顔も、どれもいいものだった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>それでも。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              料理は、自分の求めていたものとは何かが違った。<br />何が違うのか、その時の自分には言葉にできなかった。<br />ただ毎日同じ料理を何度も作っていくなかで、こうありたいと思っていた自分から少しずつ遠ざかっていくような感覚があった。<br />楽しい毎日のはずなのに、その感覚だけは消えてくれなかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              料理を辞めたいわけじゃなかった。<br />スタッフの軽口も、まかないの時間も、お客さんの笑顔も、どれも好きだった。<br />ただ、このまま自分が何者かになっていく未来がどうしても思い描けなかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>「じゃあ、自分は何がしたいんだろう」</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>その問いだけが、ただ毎日繰り返された。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="p-chapter p-chapter--bottle">
+        <div class="p-chapter__intro">
+          <p class="p-chapter__eyebrow">Chapter 2 / Bottle</p>
+          <h2 class="p-chapter__title">瓶の手紙</h2>
+        </div>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch2-S1 / 画像プレースホルダー<br />映画を観る習慣 ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              休日に、映画を観るようになっていた。<br />なるべく劇場に足を運ぶようにして、行けない日は配信で気になった作品を漁っていく。<br />古今東西、ジャンルも問わなかった。<br />スマホのことは忘れて、ただ食い入るように画面を見る。<br />それが、自分にとってのささやかな楽しみだった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              ただひとつ、見るときのこだわりがあった。<br />それは、事前情報をなるべく入れないようにすることだ。<br />予告編や公式サイトはもちろん、あらすじだって見ない。<br />すべてはタイトルとポスター次第。<br />初見の体験は、一度しか味わえない。<br />だからこそ、それを最大化したかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              作品を観終わったあと、公式サイトを開くのが習慣になっていた。<br />余韻が残っているうちに、テキストを読んで予告編を見る。<br />フラットな状態で観た自分の印象と、紹介で与えようとしている印象の差異から作品が立体的に立ち上がっていくような気がするのだ。<br />本来は作品を紹介するために存在するサイトだったが、自分にとってはもう一度作品の世界を味わうための、「付属品」だった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch2-S5 / 画像プレースホルダー<br />PERFECT DAYS 視聴 ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              ある日、ひとつの作品に出会った。<br />ヴィム・ヴェンダース監督の「PERFECT
+              DAYS」。<br />平山というトイレ清掃員の男が、規則的な日常の中にささやかな楽しみを見出していく、という決して明快な物語ではない。<br />しかし、平山がトイレ清掃をして、休憩中に木の写真を撮って、仕事終わりに銭湯に入って、行きつけの居酒屋に行くその姿には、生活することそのものを肯定する強い力があった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              大きな余韻を抱きながら、いつものように軽い気持ちでサイトを開いた。<br />あらすじや人物紹介、予告編を見れたら十分だったし、映画のサイトはたいていそれくらいの情報しかない。<br />それがサイトに求められている役割だし、映画本編の「付属品」だし当然だと思っていた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>でも、そのサイトは違った。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>ここに映像を入れる<br />（サイトの映像／平山の一日）</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>ここに映像を入れる<br />（Days of HIRAYAMA タイトル + Enter）</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <img
+                src="/assets/images/days-of-hirayama.png"
+                alt="Days of HIRAYAMA サイトのファーストビュー"
+              />
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              それは、映画で見た平山の一日だった。<br />外の箒を掃く音で目を覚まし、自販機でコーヒーを買って出勤し、トイレ清掃が終わったら銭湯に行き、行きつけの居酒屋に顔を出す。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              テキストの流れに沿って、音が重なる。<br />箒を掃く音、電動シェーバーの音、自販機がコーヒーを吐き出す音。<br />それらが組み合わさって、脳内で平山の姿が立ち上がり生活を始める。<br />予想だにしなかった体験に、しばらく惚けていた。<br />そのことに気がついたのは脳内の平山が四日ほど生活したあとで、静かな高揚感に包まれながらふと、ひとつの考えが浮かんだ。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>「自分もこんなサイト作ってみたい！」</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="p-chapter p-chapter--voyage">
+        <div class="p-chapter__intro">
+          <p class="p-chapter__eyebrow">Chapter 3 / Voyage</p>
+          <h2 class="p-chapter__title">航海</h2>
+        </div>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch3-S1 / 画像プレースホルダー<br />出航・デイトラ登録 ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              すぐに動いていた。<br />サイト制作に必要なことを調べて、WebデザインかWebコーディングなるスキルを磨く必要があると知った。<br />コーディングを選んだのは、サイトが自分の手で立ち上がっていく様を見たいと思ったからだ。<br />オンラインスクール「デイトラ」に登録して、HTMLとCSSから手をつけた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              まずは教材を通りに一行ずつ書き写した。<br />一瞬のリロードのあと、真っ白だった画面に｢Hello
+              World｣が浮かび上がった。<br />魔法みたいだ、と思った。<br />それが、自分の打ち込んだコードからできていることが不思議だった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              コードを書き足していくごとに画面は表情を変えた。<br />ただのテキストや画像の羅列が、CSSの数行で見た目を変えていく。<br />画像が載り、色が乗り、レイアウトが整った。<br />どんどん完成が近づいていく。<br />ただ教材通りに書き写しているだけなのに、何度もニヤけた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              学習と並行して、デザインギャラリーを眺めるのが習慣になった。<br />見た目は同じようなパーツでも、アニメーションの付け方ひとつで印象が変わったり、文字の表示の仕方ひとつで個性が出たり、配色のトーンで世界観が変わったりすることに気づいた。<br />今まで気にしたことのない細部が目に留まり、サイトを見るのがどんどん楽しくなっていった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              あっという間に卒業課題に辿り着いた。<br />初めてのWordPressサイト制作で、これまでの静的なサイトとは勝手が大きく違った。<br />初めての連続に戸惑いつつも、教材と課題を行き来してなんとか進めていく。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              しかし壁は、次から次に現れた。<br />テンプレートファイルの階層がわからず、意図してない場所に編集が反映されたり、ループ処理の書き方が間違ってて記事一覧が出てこなかったり、お問い合わせフォームを設置したはずなのに送信してもメールが届かなかったりもした。<br />それでもひとつずつ調べて、教材を読み返すことでほとんど完成というところまでもっていくことができた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              しかし最終チェックをしているとき、ある問題にぶち当たった。<br />WordPressにログインしてるときだけ、文字化けする箇所ができたのだ。<br />キャッシュを消したり、設定をいじったり、ブラウザを変えたりもした。<br />でも、全部効かなかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>全部、効かなかったのだ。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="/assets/images/night-of-giving-up-mobile.png"
+                />
+                <img
+                  src="/assets/images/night-of-giving-up.png"
+                  alt="深夜の自室、キーボードに置かれた手が止まっている"
+                />
+              </picture>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              キーボードに置いた手が、止まる。<br />画面を見続けて目の奥が痛いし、座りっぱなしでお尻も痛い。<br />ふと見たカレンダーは文字化けと一週間格闘しているという事実を突きつけているが、それはきっと何かの間違いで、本当は１ヶ月はやっているんじゃないかと思う。<br />真夜中にそんなことを考えるから余計に疲れていき、そこにつけ込むように嫌な思考が過ぎる。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              なんでうまくいかないんだろう、もう打つ手なんかないし、これ以上のやりようなんかないし、じゃあどうしようもないじゃん、ああなんでこんなことになっちゃったんだろう、なんで最後になるまで文字化けに気づかなかったんだろう、発生したときまで時を遡りたい、ああ一体いつなんだろう、もういっそのこと全部消して最初からやり直そうか、そうしてやろうか、じゃあこれまでやってきた時間なんだったんだよ、<br />ああくそ、八方塞がりじゃないか、<br />じゃあ、もう、
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>もう、</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>もう無理かもしれな、</p>
+          </div>
+        </article>
+
+        <article
+          class="p-chapter__scene p-chapter__scene--solo p-chapter__scene--blackout"
+          aria-hidden="true"
+        >
+          <div class="p-chapter__scene-quote"></div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>いや、違う！</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              思い出す。<br />画面を流れる文字や画像、それに合わせた豊かな音で平山の一日が脳内に駆け巡ったこと。<br />あまりの衝撃に呆けてしまったこと。<br />Webサイトはただの情報収集のツールだという認識を覆されたこと。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>そして、</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>「こんなサイトを作ってみたい！」</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>そう思ったこと。</p>
+
+            <p>
+              一度立ち上がり、大きく伸びをしてキーボードの前に座り直した。<br />もう目の奥も、お尻も痛くなかった。
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="p-chapter p-chapter--sender">
+        <div class="p-chapter__intro">
+          <p class="p-chapter__eyebrow">Chapter 4 / Sender</p>
+          <h2 class="p-chapter__title">差出人</h2>
+        </div>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch4-S1 / 画像プレースホルダー<br />ギャラリーで mount
+                を見つける ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              デザインギャラリーを眺める習慣は、文字化けと戦う日々の大事な気分転換だった。
+            </p>
+
+            <p>
+              いつものように眺めていたある夜、スクロールしている指が、ふと止まった。<br />サムネイルにあるCampusノートとその周りに雑多なものが広がる可愛らしいイラスト。<br />それが、自分の好みにまっすぐ刺さっていた。
+            </p>
+
+            <p>開いてみた。<br />mount inc. と書いてあった。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>トップページに、これまでの制作物をまとめた映像が流れていた。</p>
+
+            <p>
+              Campusノートが開いて、その上に色とりどりの街が生まれる。<br />続いてKOKUYOのリニューアルページ、KOKUYOを知るのページ、PERFECT
+              DAYS、
+            </p>
+
+            <p>PERFECT DAYS。</p>
+
+            <p>何気なく眺めていた目が、固まる。</p>
+
+            <p>
+              ポートフォリオの中に、PERFECT DAYSがあった。<br />映像の中ではたった一秒ほどしか映り込んでいなかったが、それでもすぐにわかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              急いで、ポートフォリオを確認する。<br />間違いない、PERFECT
+              DAYSだった。
+            </p>
+
+            <p>
+              そのまま他にどんな制作をしているのかが気になって、ひとつずつ開いていった。<br />どのサイトもただ情報を伝えるためだけのものではなかった。<br />Web体験を通して、その向こうにある空気感や価値観がちゃんと「感じられる」ようになっている。
+            </p>
+
+            <p>Perfect Days だけじゃなかったんだ。<br />ここは他とは違う。</p>
+
+            <p>
+              そう確信が固まっていく。<br />その日から、少しずつ mount
+              について調べるようになった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch4-S5 / 画像プレースホルダー<br />Claude Code を入れる決心 ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              文字化けとの戦いは、依然続いていた。<br />何日もかけて教材を読み返し、検索を繰り返して、打てる手は打った気でいた。<br />それでも消えてはくれなかった。
+            </p>
+
+            <p>
+              もうひとりで考えられることはやり切ったあとだったし、新しい風を入れることにした。<br />Claude
+              Code を導入したのだ。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              最初は問題を丸投げするだけだった。<br />でもそれでは自分の実力が積み上がっていかないと思って、試行のログを残すようにした。<br />どのような仮説を立て、どうアプローチするか考え、どう実行するかを自分も追うようにした。<br />知らない用語があれば調べ、理解できていない仕組みは教えてもらい、最後は作ってもらったテスト問題で確認するようにした。
+            </p>
+
+            <p>
+              仮説を立て、検証し、外れて、また仮説を立てる。<br />AIと並走しながら、文字化けの原因が少しずつ絞り込まれていく。<br />ひとりでは見つけられなかった道を、一緒に探してくれるような感覚があった。
+            </p>
+
+            <p>
+              そして、ある仮説に辿り着く。<br />ログイン中だけ表示される管理バー周りが、自分のテーマと干渉していたのかもしれない。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              仮説に沿った対処法を、いくつか挙げてもらう。<br />それぞれのメリットとデメリットを確認して、そのうちのひとつを実行してもらう。
+            </p>
+
+            <p>
+              リロードする。<br />一瞬の間、タブにぐるぐるが表示され、消える。<br />ページの上からスクロールしていき、目を凝らしてテキストの隅から隅まで確認する。<br />そしてページの底まで辿り着いた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>なかった。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>文字化けはなかった。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              たまたまじゃないかと疑って何度もリロードした。<br />ログインしてログアウト、リロード、キャッシュの削除、リロード、サイトデータの削除、リロード。<br />確かに文字化けはなくなっていた。<br />安堵感と静かな高揚感がない交ぜになる。
+            </p>
+
+            <p>ようやく辿り着いた。<br />長い戦いが、ついに終わったのだ。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--image-only">
+          <div class="p-chapter__scene-media">
+            <figure class="p-chapter__scene-image">
+              <figcaption class="p-chapter__scene-caption">
+                [ Ch4-S12 / 画像プレースホルダー<br />イム代表の note ]
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>
+              合格をもらってから、mount についてもっと調べるようになった。<br />やがて、イム代表本人の
+              noteに辿り着いた。
+            </p>
+
+            <p>
+              クライアントと密に会話できること、共感できる仕事であること、企画に納得できること、自分たちにとってチャレンジがあること、十分な時間と予算が確保できること、そして、ふたりで一緒につくれること。<br />そのどれかが欠けたら、引き受けない。
+            </p>
+
+            <p>
+              全員が納得して、胸を張れるものを目指す。<br />規定演技を超えた、自分たちならではのチャレンジを生み出す。
+            </p>
+
+            <p>売上至上主義ではなく、品質至上主義。</p>
+
+            <p>自分が無自覚に探していたものの輪郭が、ここではっきりした。</p>
+
+            <p>そして、その記事のタイトルに、改めて目が止まる。</p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>
+              「面倒くさくて仕方ないことをどうせやるなら、<br />納得できるものをつくっていこう。」
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>何かが、自分の中で共鳴した。</p>
+
+            <p>思い出していた。</p>
+
+            <p>
+              小学校の頃に作った俳句、ありきたりの振り返りで終わらせるのが嫌で当時はまっていたラノベのタイトルを少しだけずらして自分のものにした高校の卒業文集。
+            </p>
+
+            <p>
+              そして、読書感想文。<br />ただ「この話のこのシーンが良かった」みたいな、流し読みで終わるものでは書きたくなかった。<br />自分の体験と紐付けて、「本」の見え方も「自分」の見え方も、しっかり読んだ人の中に立ち上がる文章を書きたかった。<br />読み終わった人の中に、何か大きな感情が残るものを書きたかったし、書いた自分も「いいもの書いた」と思いたかった。
+            </p>
+
+            <p>
+              どれも、合格をもらえるかどうかより、自分が読んで納得できるかが大事だった。<br />誰に頼まれたわけでもない。<br />ただ、自分の中の感覚を、お題に通したかった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>「これが作りたい」というテーマは、自分にはなかった。</p>
+
+            <p>
+              最初はただ作るのが好きなんだと思っていたから、小説を書こうとした。<br />でも実際の書いている時間は辛くて、その正体はずっとわからなかった。
+            </p>
+
+            <p>でも、今わかった。</p>
+
+            <p>
+              ただ作るのが好きなんじゃなかった。<br />まっさらな状態で好きにしていいよと言われるより、ある程度の枠を設定されてその中でいいものを作ろうと挑むことが、好きだった。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--text-only">
+          <div class="p-chapter__scene-text">
+            <p>だから、過去の仕事はしっくりこなかったんだ。</p>
+
+            <p>
+              家電量販店で売れと言われたケータイ、キッチンバイト。<br />それらには枠はあったけれど、創作を通して挑む場所じゃなかった。<br />一方で小説には、創作はあったけれど、挑むべき枠がなかった。
+            </p>
+
+            <p>
+              それぞれが違う理由で、自分の核から外れていた。<br />自分の道は、その重なる場所にあった。
+            </p>
+
+            <p>
+              枠を渡されて、その中でいいものを作ろうと挑む。<br />それが、自分の道だった。
+            </p>
+
+            <p>
+              自分と同じ場所に立っている人が、ここにいた。<br />もう心は決まっていた。
+            </p>
+          </div>
+        </article>
+
+        <article class="p-chapter__scene p-chapter__scene--solo">
+          <div class="p-chapter__scene-quote">
+            <p>「ここに、行きたい！」</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="p-outro">
+        <div class="p-outro__closing">
+          <p class="p-outro__signature">大瀧嘉具弥</p>
+          <footer class="p-outro__footer">
+            <p class="p-outro__footer-text">Course to Mount</p>
+            <p class="p-outro__footer-text">&copy; 2026 大瀧嘉具弥</p>
+          </footer>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
