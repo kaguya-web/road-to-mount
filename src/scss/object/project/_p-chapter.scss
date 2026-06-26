@@ -171,6 +171,7 @@
   }
 
   .p-chapter__scene-media {
+    display: block;
     width: 100%;
     max-width: 100%;
     height: 100vh;
@@ -178,6 +179,7 @@
     padding: 0;
 
     @include mq-md-up {
+      display: block;
       width: 100%;
       max-width: 100%;
       height: 100vh;
@@ -188,6 +190,7 @@
   }
 
   .p-chapter__scene-image {
+    display: block;
     width: 100%;
     height: 100%;
     aspect-ratio: auto;
