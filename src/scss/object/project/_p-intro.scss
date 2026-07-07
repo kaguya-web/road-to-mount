@@ -9,6 +9,8 @@
   justify-content: center;
   text-align: center;
   padding: $space-m;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .p-intro__eyebrow {
