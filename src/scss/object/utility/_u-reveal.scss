@@ -1,0 +1,40 @@
+// スクロールで要素が画面に入ったら「ふんわり現れる」演出
+// JS（main.js）が対象要素に .u-reveal を付与し、可視化時に .is-visible を足す。
+// prefers-reduced-motion 時は JS 側で付与をスキップするが、保険として CSS でも無効化する。
+
+.u-reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.u-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+// 章タイトル：左から右へ動きながら現れる
+.u-reveal--slide {
+  transform: translateX(-2.5rem);
+}
+
+// 象徴画像：ふんわり浮かぶ（少しゆっくり・スケール込み）
+.u-reveal--float {
+  transform: translateY(3rem) scale(0.98);
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-reveal,
+  .u-reveal--slide,
+  .u-reveal--float {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

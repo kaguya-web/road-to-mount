@@ -150,6 +150,14 @@
     justify-content: center;
   }
 
+  p {
+    // base の p { font-size: 20px } を要素セレクタで上書きする必要がある。
+    // スマホは base の 20px のまま、タブレット以上だけ 32px にする。
+    @include mq-md-up {
+      font-size: 32px;
+    }
+  }
+
   p + p {
     margin-top: $space-s;
   }
@@ -346,7 +354,8 @@
   line-height: $line-height-title;
   letter-spacing: 0.05em;
   text-align: left;
-  max-width: 960px;
+  // 大きい文字でも <br /> の改行位置どおりに表示するため、幅制約は設けない
+  max-width: none;
 
   @include mq-md-up {
     text-align: center;
@@ -354,6 +363,17 @@
 
   p {
     font-size: 30px;
+
+    // タブレット以上は独立ページの一文を大きく見せる
+    @include mq-md-up {
+      font-size: 48px;
+    }
+  }
+}
+
+.p-chapter__scene-quote--xl {
+  p {
+    font-size: 150px;
   }
 }
 
