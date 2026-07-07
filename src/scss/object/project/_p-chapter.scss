@@ -10,11 +10,13 @@
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
   @include mq-md-up {
     padding: $space-xl $space-l;
+    text-align: left;
   }
 }
 
@@ -69,6 +71,10 @@
   background-color: $color-bg-chapter-3;
 }
 
+.p-chapter--isle .p-chapter__scene {
+  background-color: $color-bg-chapter-4;
+}
+
 .p-chapter__scene-media {
   width: 100%;
   display: flex;
@@ -87,6 +93,7 @@
 }
 
 .p-chapter__scene-image {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
   background-color: $color-bg-base;
@@ -102,6 +109,22 @@
     object-fit: cover;
     display: block;
   }
+}
+
+// スクショ画像の出典クレジット（右下・地色に依らず読める濃色ピル）
+.p-chapter__scene-image-credit {
+  position: absolute;
+  right: $space-s;
+  bottom: $space-s;
+  z-index: 1;
+  padding: 0.15em 0.6em;
+  font-family: $font-family-sans;
+  font-size: $font-size-caption;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  pointer-events: none;
 }
 
 .p-chapter__scene-caption {
@@ -208,6 +231,99 @@
       height: 100%;
       object-fit: contain;
       object-position: center;
+    }
+  }
+}
+
+// 映像のみシーン（PERFECT DAYSサイトの映像・全画面のシネマスコープ帯）
+.p-chapter__scene--video-only {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .p-chapter__scene-media {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    @include mq-md-up {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+      position: static;
+      padding: 0;
+    }
+  }
+
+  .p-chapter__scene-video {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    overflow: hidden;
+
+    // ※ video 要素セレクタに display は書かない（クラス側の出し分けを詳細度で打ち消さないため）
+    video {
+      object-position: center;
+    }
+  }
+
+  // スマホ〜タブレット縦（〜1023px）: 縦動画で画面いっぱい（中央クロップ）
+  // ※中間サイズは横動画だと上下余白が過大になるため、縦動画を lg 未満まで流用する
+  .p-chapter__scene-video-pc {
+    display: none;
+  }
+
+  .p-chapter__scene-video-mobile {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // 出典クレジット（背景の黒帯・右下）
+  .p-chapter__scene-video-credit {
+    position: absolute;
+    right: $space-s;
+    bottom: $space-s;
+    z-index: 1;
+    font-family: $font-family-sans;
+    font-size: $font-size-caption;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.55);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+  }
+
+  // PC（1024px〜）: 横動画を 2.35:1 のシネマスコープ帯で表示（上下に黒帯）
+  @include mq-lg-up {
+    .p-chapter__scene-video-pc {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1024 / 436;
+      max-height: 100vh;
+      object-fit: cover;
+    }
+
+    .p-chapter__scene-video-mobile {
+      display: none;
     }
   }
 }
