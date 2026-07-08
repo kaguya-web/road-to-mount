@@ -74,4 +74,42 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollSpawn = now;
     spawnAt(mouseX, mouseY);
   }, { passive: true });
+
+  // スクロールリビール演出（ふんわり現れる）
+  // prefers-reduced-motion 環境では演出そのものを付けない
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if (!prefersReducedMotion) {
+    // 本文テキスト・引用：下からふんわり
+    const textTargets = document.querySelectorAll(
+      '.p-prologue__scene-quote, .p-prologue__scene-text, .p-chapter__scene-quote, .p-chapter__scene-text'
+    );
+    textTargets.forEach((el) => el.classList.add('u-reveal'));
+
+    // 章タイトル（eyebrow + title）：左から右へ動きながら
+    const titleTargets = document.querySelectorAll(
+      '.p-chapter__eyebrow, .p-chapter__title'
+    );
+    titleTargets.forEach((el) => {
+      el.classList.add('u-reveal', 'u-reveal--slide');
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -15% 0px', threshold: 0.15 }
+    );
+
+    document
+      .querySelectorAll('.u-reveal')
+      .forEach((el) => revealObserver.observe(el));
+  }
 });
