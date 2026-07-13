@@ -12,16 +12,22 @@
   flex-direction: column;
   justify-content: center;
   padding: $space-l $space-m;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
+  color: $color-bg-base; // 白文字（背景色はステージ背景 .c-stage-bg が担う）
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
   @include mq-md-up {
     padding: $space-xl $space-l;
     text-align: left;
+  }
+
+  // 見出しの中身は 720px 幅に収め、背景色はページ全幅に効かせる
+  > * {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -30,7 +36,7 @@
   font-size: $font-size-caption;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $color-text-muted;
+  color: rgba(255, 255, 255, 0.6); // 暗背景の上でも読める淡色
   margin-bottom: $space-s;
 }
 
@@ -48,8 +54,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $color-bg-prologue;
-  color: $color-bg-base;
+  color: $color-bg-base; // 背景色はステージ背景 .c-stage-bg が担う
   scroll-snap-align: start;
   scroll-snap-stop: always;
 

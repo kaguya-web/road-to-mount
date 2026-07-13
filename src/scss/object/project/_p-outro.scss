@@ -40,8 +40,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $color-bg-outro;
-  color: $color-text-on-light;
+  color: $color-text-on-light; // 背景色（朝空の水色）はステージ背景 .c-stage-bg が担う
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
