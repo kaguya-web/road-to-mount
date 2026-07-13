@@ -37,3 +37,7 @@ $space-xl: 8rem;
 $breakpoint-sm: 640px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
+
+// 航路ナビ
+$voyage-gutter-width: 72px; // 右端・航路ナビ用スペース幅（色帯もこの幅）
+$color-voyage-line: #c9986b; // 航路の線・ドット（船と同じパイン系）

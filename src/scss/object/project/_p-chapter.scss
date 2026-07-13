@@ -7,16 +7,22 @@
   flex-direction: column;
   justify-content: center;
   padding: $space-l $space-m;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
+  color: $color-bg-base; // 章の背景色（暗色）の上に載るので白文字
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
   @include mq-md-up {
     padding: $space-xl $space-l;
     text-align: left;
+  }
+
+  // 見出しの中身は 720px 幅に収め、背景色はページ全幅に効かせる
+  > * {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -25,7 +31,7 @@
   font-size: $font-size-caption;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $color-text-muted;
+  color: rgba(255, 255, 255, 0.6); // 暗背景の上でも読める淡色
   margin-bottom: $space-s;
 }
 
@@ -42,8 +48,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $color-bg-chapter-1;
-  color: $color-bg-base;
+  color: $color-bg-base; // 背景色はステージ背景 .c-stage-bg が担う（章切替を 0.6s で滑らかに）
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
@@ -51,28 +56,6 @@
     flex-direction: row;
     align-items: stretch;
   }
-}
-
-// 章ごとの背景色変化（青系・徐々に明るく）
-// 暫定：Drift は Prologue と同じ深夜色を流用。境界が見えづらいので色設計見直しは別途
-.p-chapter--drift .p-chapter__scene {
-  background-color: $color-bg-prologue;
-}
-
-.p-chapter--bottle .p-chapter__scene {
-  background-color: $color-bg-chapter-1;
-}
-
-.p-chapter--voyage .p-chapter__scene {
-  background-color: $color-bg-chapter-2;
-}
-
-.p-chapter--sender .p-chapter__scene {
-  background-color: $color-bg-chapter-3;
-}
-
-.p-chapter--isle .p-chapter__scene {
-  background-color: $color-bg-chapter-4;
 }
 
 .p-chapter__scene-media {

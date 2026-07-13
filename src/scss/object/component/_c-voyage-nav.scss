@@ -1,0 +1,278 @@
+@use '../../foundation/variables' as *;
+@use '../../foundation/mixin' as *;
+
+// モバイル〜タブレットのパーツ寸法（画面幅で可変。タブレットほど大きく）
+$nav-dot-mobile: clamp(15px, 3.2vw, 22px);
+$nav-line-mobile: clamp(2px, 0.5vw, 3px);
+$nav-ship-mobile: clamp(32px, 7vw, 46px);
+
+// 航路ナビゲーション（寄港地ドット＋現在地の船）
+// 縦の航路を各章のドットで表し、スクロールに応じて船が下っていく。
+// scroll-snap コンテナは html なので window.scrollY を基準に JS で船位置を補間する。
+//
+// - モバイル〜タブレット（〜lg）：右上のトグルボタンで開閉する、上から降りてくる
+//   全画面オーバーレイ。航路は左寄せ・各ドットの右に章タイトルを常時表示。
+// - lg 以上：右端の縦ピル。ドットのみ表示し、hover で章名ラベルが左に出る。
+
+// -----------------------------------------------------------------------------
+// トグルボタン（モバイル〜タブレットのみ。右上固定）
+// -----------------------------------------------------------------------------
+.c-voyage-nav__toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 60; // パネル（50）より上。開いても押せる
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(17, 23, 37, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(17, 23, 37, 0.75);
+  }
+
+  @include mq-lg-up {
+    display: none; // デスクトップは常時表示のピルなのでトグル不要
+  }
+}
+
+.c-voyage-nav__toggle-bar {
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background: #f5f1ea;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+}
+
+// 開いている間は三本線を × に変形（バー間隔 = height 3 + gap 7 = 10px）
+.c-voyage-nav__toggle.is-open {
+  .c-voyage-nav__toggle-bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  .c-voyage-nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .c-voyage-nav__toggle-bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 航路パネル本体
+// ベース = モバイル〜タブレット（上から降りてくるオーバーレイ）
+// -----------------------------------------------------------------------------
+.c-voyage-nav {
+  position: fixed;
+  top: -100vh; // 既定は画面上に格納（上から降りてくる）
+  left: 0;
+  right: 0;
+  z-index: 50;
+  min-height: 100vh;
+  min-height: 100dvh;
+  // 左パディングを画面幅比で大きくして、航路を左端から中央寄りへ寄せる。
+  // 船の x はドット中心に合わせて JS が設定するので、可変でもズレない。
+  padding: clamp(76px, 9vh, 108px) 24px 48px clamp(64px, 30vw, 320px);
+  // 背景は不透明なので backdrop-filter は不要（背後は見えない）。
+  // 開閉は top で行い、上から降りてくる動きにする。
+  background: rgb(13, 18, 30);
+  pointer-events: none;
+  transition: top 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.is-open {
+    top: 0;
+    pointer-events: auto;
+  }
+
+  @include mq-lg-up {
+    // デスクトップ：右端の縦ピル
+    top: 50%;
+    left: auto;
+    right: clamp(10px, 2vw, 24px);
+    min-height: 0;
+    padding: 16px 9px;
+    border-radius: 999px;
+    background: rgba(17, 23, 37, 0.32);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transform: translateY(-50%);
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+
+    &.is-open {
+      top: 50%; // デスクトップは top での開閉を使わない
+    }
+
+    // 物語の外（表紙＝出港・署名＝返事）では引っ込める（デスクトップのみ）
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.c-voyage-nav__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(30px, 6.5vw, 60px);
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+
+  // 航路の線（ドット列の背後・船と同じパイン系）
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: calc(#{$nav-dot-mobile} / 2); // ドット中心（モバイルは左寄せ）
+    width: $nav-line-mobile;
+    transform: translateX(-50%);
+    background: $color-voyage-line;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  @include mq-lg-up {
+    align-items: center;
+    gap: 46px;
+
+    &::before {
+      left: 50%;
+      width: 2px;
+    }
+  }
+}
+
+.c-voyage-nav__item {
+  display: flex;
+}
+
+.c-voyage-nav__dot {
+  position: relative;
+  width: $nav-dot-mobile;
+  height: $nav-dot-mobile;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(201, 152, 107, 0.55); // パイン系（船と同色）・非アクティブは淡く
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25),
+    0 1px 3px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: #e8d3b8; // 明るいベージュ
+  }
+
+  &.is-active {
+    background: #f5f1ea; // 帆と同じ生成り色で現在地を強調
+    transform: scale(1.25);
+  }
+
+  @include mq-lg-up {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+// 章名ラベル
+// モバイル：ドットの右に常時表示。デスクトップ：hover でドットの左に出す。
+.c-voyage-nav__tip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + clamp(16px, 3vw, 28px));
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: $font-family-sans;
+  font-size: clamp(19px, 3.6vw, 27px);
+  letter-spacing: 0.16em;
+  color: rgba(245, 241, 234, 0.72);
+  transition: color 0.3s ease;
+  pointer-events: none;
+
+  @include mq-lg-up {
+    left: auto;
+    right: calc(100% + 12px);
+    padding: 3px 10px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: #fff;
+    background: rgba(17, 23, 37, 0.85);
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+}
+
+// モバイル：現在地の章名を明るく
+.c-voyage-nav__dot.is-active .c-voyage-nav__tip {
+  color: #fff;
+
+  @include mq-lg-up {
+    color: #fff; // デスクトップの色は据え置き
+  }
+}
+
+// デスクトップ：hover / focus でラベルを出す
+.c-voyage-nav__dot:hover .c-voyage-nav__tip,
+.c-voyage-nav__dot:focus-visible .c-voyage-nav__tip {
+  @include mq-lg-up {
+    opacity: 1;
+  }
+}
+
+// 現在地の船（JS で left / translateY を更新）
+// left はドット中心に合わせて JS が設定する（可変パディング・中央寄せでもズレない）。
+.c-voyage-nav__ship {
+  position: absolute;
+  top: 0;
+  width: $nav-ship-mobile;
+  height: $nav-ship-mobile;
+  transform: translate(-50%, 0) translateY(-50%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+  z-index: 3;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include mq-lg-up {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-voyage-nav__ship {
+    transition: none;
+  }
+
+  .c-voyage-nav {
+    transition: none;
+  }
+}

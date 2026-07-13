@@ -1,0 +1,13 @@
+@use '../../foundation/variables' as *;
+
+// ステージ背景（全画面の背後レイヤー）
+// 各ページ（scene/intro）の背景は透明にし、この1枚を JS で現在章の色に変える。
+// 右端の色帯もこのレイヤーが兼ねるので、本文背景と色帯が物理的に同一 = 章切替で浮かない。
+.c-stage-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: $color-bg-base;
+  transition: background-color 0.6s ease;
+  pointer-events: none;
+}
