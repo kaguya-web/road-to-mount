@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const textTargets = document.querySelectorAll(
       '.p-prologue__scene-quote, .p-prologue__scene-text, .p-chapter__scene-quote, .p-chapter__scene-text'
     );
-    textTargets.forEach((el) => el.classList.add('u-reveal'));
+    textTargets.forEach((el) => {
+      // 一文字ずつ演出（.js-fade-in）を含む段落は、親のふわっとを付けない（二重がけ防止）
+      if (el.querySelector('.js-fade-in')) return;
+      el.classList.add('u-reveal');
+    });
 
     // 章タイトル（eyebrow + title）：左から右へ動きながら
     const titleTargets = document.querySelectorAll(
@@ -191,3 +195,27 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   }
 });
+
+//嫌な思考を表すテキストフェードイン
+const DELAY = 90;
+
+//文字を<span>に分割
+let index = 0;
+document.querySelectorAll('.js-fade-in').forEach(el => {
+  el.innerHTML = [...el.dataset.text].map((ch) => {
+    const char = ch === ' ' ? '&nbsp;' : ch;
+    return `<span class="char" style="animation-delay:${index++ * DELAY}ms">${char}</span>`;
+  }).join('');
+});
+
+//スクロールで.is-visibleを付与
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.js-fade-in').forEach(el => observer.observe(el));
