@@ -226,6 +226,95 @@
   }
 }
 
+// 閲覧情報ページ（灯台の締め・画像の次の独立ページ・青背景に直接 URL/ID/PW）
+.p-chapter__scene--site-access {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-l $space-m;
+
+  @include mq-md-up {
+    flex-direction: column;
+    padding: $space-xl $space-l;
+  }
+}
+
+// 閲覧情報（URL・ユーザー名・パスワード）：カード枠なし・章の背景色に直接
+// 本文と揃える：明朝・白（$color-bg-base）・大きめ
+.p-chapter__site-access {
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  font-family: $font-family-mincho;
+  color: $color-bg-base;
+}
+
+.p-chapter__site-access-label {
+  font-size: $font-size-body;
+  letter-spacing: 0.18em;
+  opacity: 0.85;
+  margin-bottom: $space-m;
+
+  @include mq-md-up {
+    font-size: 1.5rem;
+  }
+}
+
+.p-chapter__site-access-url {
+  font-size: 1.25rem;
+  word-break: break-all;
+  margin-bottom: $space-l;
+
+  @include mq-md-up {
+    font-size: 1.75rem;
+  }
+
+  a {
+    color: $color-bg-base;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.p-chapter__site-access-cred {
+  display: inline-flex;
+  gap: $space-l;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  dt {
+    font-size: $font-size-caption;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+
+    @include mq-md-up {
+      font-size: 1.125rem;
+    }
+  }
+
+  dd {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+
+    @include mq-md-up {
+      font-size: 1.75rem;
+    }
+  }
+}
+
 // 映像のみシーン（PERFECT DAYSサイトの映像・全画面のシネマスコープ帯）
 .p-chapter__scene--video-only {
   flex-direction: column;
@@ -286,6 +375,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-fit: cover;
   }
 
   // 出典クレジット（背景の黒帯・右下）
@@ -330,6 +420,7 @@
     flex-direction: column;
     padding: $space-xl $space-l;
   }
+
 }
 
 .p-chapter__scene-quote {
@@ -354,9 +445,33 @@
   }
 }
 
+.p-chapter__scene-quote--desire {
+  color: rgb(254, 0, 0);
+}
+
 .p-chapter__scene-quote--xl {
   p {
     font-size: 150px;
   }
 }
 
+.js-fade-in {
+  
+}
+
+.js-fade-in .char {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.is-visible .char {
+  animation: fadeInScale 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

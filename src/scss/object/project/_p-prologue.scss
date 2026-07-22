@@ -204,6 +204,11 @@
 
   p {
     font-size: 30px;
+
+    // タブレット以上は独立ページの一文を大きく見せる
+    @include mq-md-up {
+      font-size: 48px;
+    }
   }
 }
 
